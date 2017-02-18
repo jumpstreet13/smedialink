@@ -1,5 +1,7 @@
 package com.asuper.abocha.smedialink;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,10 +13,14 @@ import java.util.List;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    public static final String APP_PREFERENCES = "mysettings";
+    public static final String NUMBER = "number";
+    public static final String KOFF = "koff";
     private EditText number;
     private EditText koff;
     private Button okButton, backButton;
     private boolean isNew;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +30,22 @@ public class SettingsActivity extends AppCompatActivity {
         koff = (EditText) findViewById(R.id.editTextkSettingActivity);
         okButton = (Button) findViewById(R.id.buttonSettingsActivity);
         backButton = (Button) findViewById(R.id.buttonBackSetitngsActivity);
+        sharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        if(sharedPreferences.contains(NUMBER)){
+            number.setText(String.valueOf(sharedPreferences.getInt(NUMBER, 0)));
+            koff.setText(String.valueOf(sharedPreferences.getFloat(KOFF, 0.0f)));
+        }
+
 
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Element element = findThisElement(Integer.parseInt(number.getText().toString()));
                 element.setGreen(Float.parseFloat(koff.getText().toString()));
+                SharedPreferences.Editor edit = sharedPreferences.edit();
+                edit.putInt(NUMBER, element.getNumber());
+                edit.putFloat(KOFF, element.getGreen());
+                edit.apply();
                 if(isNew){
                     Toast.makeText(SettingsActivity.this, "Добавлена новая запись", Toast.LENGTH_SHORT).show();
                 }else{
@@ -41,7 +57,7 @@ public class SettingsActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                SettingsActivity.super.onBackPressed();
             }
         });
     }
