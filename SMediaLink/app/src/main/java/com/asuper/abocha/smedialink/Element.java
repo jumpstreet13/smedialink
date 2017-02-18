@@ -6,10 +6,10 @@ import android.widget.Button;
 public class Element {
 
     private int number;
-    private Button button;
+    private int green;
 
-    Element(int number, Button button){
-        this.button = button;
+    Element(int number, int green) {
+        this.green = green;
         this.number = number;
     }
 
@@ -21,11 +21,11 @@ public class Element {
         this.number = number;
     }
 
-    public Button getButton() {
-        return button;
+    public int getGreen() {
+        return green;
     }
 
-    public void setButton(Button button) {
-        this.button = button;
+    public void setGreen(int green) {
+        this.green = green;
     }
 }
