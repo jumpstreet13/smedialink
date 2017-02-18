@@ -47,9 +47,9 @@ public class SettingsActivity extends AppCompatActivity {
                 edit.putFloat(KOFF, element.getGreen());
                 edit.apply();
                 if(isNew){
-                    Toast.makeText(SettingsActivity.this, "Добавлена новая запись", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SettingsActivity.this, R.string.recordAdded, Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(SettingsActivity.this, "Запись обновлена", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SettingsActivity.this, R.string.recordRefreshed, Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SMediaLink</string>
+    <string name="recordAdded">Добавлена новая запись</string>
+    <string name="recordRefreshed">Запись обновлена</string>
+    <string name="button">Button</string>
+    <string name="stringNumber">номер строки</string>
+    <string name="koff">коэффицент</string>
+    <string name="ok">Ok</string>
+    <string name="back">Back</string>
 </resources>

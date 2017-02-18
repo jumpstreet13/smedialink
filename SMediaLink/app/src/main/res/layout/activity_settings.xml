@@ -14,7 +14,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="номер строки"
+        android:hint="@string/stringNumber"
         android:gravity="center"
         android:layout_gravity="center"
         android:ems="10"
@@ -23,14 +23,14 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="коэффицент"
+        android:hint="@string/koff"
         android:gravity="center"
         android:layout_gravity="center"
         android:ems="10"
         android:id="@+id/editTextkSettingActivity" />
 
     <Button
-        android:text="Ok"
+        android:text="@string/ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -39,7 +39,7 @@
         android:id="@+id/buttonSettingsActivity" />
 
     <Button
-        android:text="Back"
+        android:text="@string/back"
         android:paddingTop="5dp"
         android:gravity="center"
         android:layout_gravity="center"

@@ -21,7 +21,7 @@
         android:id="@+id/textViewDetailActivity" />
 
     <com.asuper.abocha.smedialink.ButtonWithProgress
-        android:text="Button"
+        android:text="@string/button"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
