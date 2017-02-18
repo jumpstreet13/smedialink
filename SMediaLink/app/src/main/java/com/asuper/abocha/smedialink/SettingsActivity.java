@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class SettingsActivity extends AppCompatActivity {
     private EditText number;
     private EditText k;
     private Button okButton;
+    private boolean isNew;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,11 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Element element = findThisElement(Integer.parseInt(number.getText().toString()));
                 element.setGreen(Float.parseFloat(k.getText().toString()));
+                if(isNew){
+                    Toast.makeText(SettingsActivity.this, "Добавлена новая запись", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(SettingsActivity.this, "Запись обновлена", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -35,11 +42,13 @@ public class SettingsActivity extends AppCompatActivity {
         List<Element> elements = HomeForElements.get(getApplicationContext()).getElements();
         for (Element element : elements) {
             if (element.getNumber() == number) {
+                isNew = false;
                 return element;
             }
         }
         Element element = new Element(elements.size(), 0);
         elements.add(element);
+        isNew = true;
         return element;
     }
 }

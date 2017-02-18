@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class DetailActivity extends AppCompatActivity {
 
     private TextView textView;
-    private Button button;
+    private ButtonWithProgress button;
 
 
     @Override
@@ -17,8 +17,9 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         textView = (TextView) findViewById(R.id.textViewDetailActivity);
-        button = (Button) findViewById(R.id.buttonDetailActivity);
+        button = (ButtonWithProgress) findViewById(R.id.buttonDetailActivity);
         Element element = HomeForElements.get(getApplicationContext()).getElement(getIntent().getIntExtra("number",0));
         textView.setText(String.valueOf(element.getNumber()));
+        button.setRatio(element.getGreen());
     }
 }
