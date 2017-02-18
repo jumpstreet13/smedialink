@@ -19,7 +19,7 @@
         android:layout_gravity="center"
         android:id="@+id/textViewDetailActivity" />
 
-    <Button
+    <com.asuper.abocha.smedialink.ButtonWithProgress
         android:text="Button"
         android:layout_gravity="center"
         android:layout_width="wrap_content"

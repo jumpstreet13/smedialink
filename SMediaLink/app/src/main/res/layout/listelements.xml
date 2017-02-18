@@ -12,7 +12,7 @@
         android:id="@+id/textViewListElements"
         android:layout_weight="1" />
 
-    <Button
+    <com.asuper.abocha.smedialink.ButtonWithProgress
         android:text="Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private class ElementHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView textView;
-        public Button btn;
+        public ButtonWithProgress btn;
         public ImageButton imageButton;
         public int number;
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.textViewListElements);
             textView.setOnClickListener(this);
-            btn = (Button) itemView.findViewById(R.id.buttonListElements);
+            btn = (ButtonWithProgress) itemView.findViewById(R.id.buttonListElements);
             btn.setOnClickListener(this);
             imageButton = (ImageButton) itemView.findViewById(R.id.imageViewListElements);
             itemView.setOnClickListener(this);
