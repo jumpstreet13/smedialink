@@ -1,5 +1,6 @@
 package com.asuper.abocha.smedialink;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,33 +30,60 @@ public class MainActivity extends AppCompatActivity {
         updateUI();
     }
 
-    private void updateUI(){
-        HomeForElements homeForElements = HomeForElements.get(this);
+    private void updateUI() {
+        HomeForElements homeForElements = HomeForElements.get(getApplicationContext());
         List<Element> elements = homeForElements.getElements();
         elementAdapter = new ElementAdapter(elements);
         recyclerView.setAdapter(elementAdapter);
     }
 
-    private class ElementHolder extends RecyclerView.ViewHolder{
+    private class ElementHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView textView;
         public Button btn;
-        public ImageView imageView;
+        public ImageButton imageButton;
+        public int number;
 
 
         public ElementHolder(View itemView) {
             super(itemView);
-            textView = (TextView)itemView.findViewById(R.id.textViewListElements);
+            textView = (TextView) itemView.findViewById(R.id.textViewListElements);
+            textView.setOnClickListener(this);
             btn = (Button) itemView.findViewById(R.id.buttonListElements);
-            imageView = (ImageView) itemView.findViewById(R.id.imageViewListElements);
+            btn.setOnClickListener(this);
+            imageButton = (ImageButton) itemView.findViewById(R.id.imageViewListElements);
+            itemView.setOnClickListener(this);
+        }
+
+        public void bindELement(Element element) {
+            textView.setText(String.valueOf(element.getNumber()));
+            number = element.getNumber();
+        }
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.buttonListElements:
+                    Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                    intent.putExtra("number", number);
+                    startActivity(intent);
+                    break;
+
+                case R.id.imageViewListElements:
+                    Intent intent1 = new Intent(MainActivity.this, DetailActivity.class);
+                    intent1.putExtra("number", number);
+                    startActivity(intent1);
+                    break;
+            }
+
         }
     }
 
-    private class ElementAdapter extends RecyclerView.Adapter<ElementHolder>{
+    private class ElementAdapter extends RecyclerView.Adapter<ElementHolder> {
 
         private List<Element> elements;
 
-        public ElementAdapter(List<Element> elements){
+        public ElementAdapter(List<Element> elements) {
             this.elements = elements;
         }
 
@@ -68,9 +97,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(ElementHolder holder, int position) {
             Element element = elements.get(position);
-            holder.textView.setText(String.valueOf(element.getNumber()));
+            holder.bindELement(element);
 
         }
+
 
         @Override
         public int getItemCount() {
