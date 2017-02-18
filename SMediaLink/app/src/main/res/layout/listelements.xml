@@ -25,11 +25,10 @@
 
     <ImageButton
         android:layout_gravity="center"
-        android:rotation="179"
         android:background="@android:color/transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="?android:attr/actionModeCloseDrawable"
+        android:src="@drawable/ic_arrow_forward_black_24dp"
         android:id="@+id/imageViewListElements"
         android:layout_weight="1"/>
 

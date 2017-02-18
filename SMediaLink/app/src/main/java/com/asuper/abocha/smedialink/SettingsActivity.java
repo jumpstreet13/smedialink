@@ -12,8 +12,8 @@ import java.util.List;
 public class SettingsActivity extends AppCompatActivity {
 
     private EditText number;
-    private EditText k;
-    private Button okButton;
+    private EditText koff;
+    private Button okButton, backButton;
     private boolean isNew;
 
     @Override
@@ -21,19 +21,27 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         number = (EditText) findViewById(R.id.editTextnumberSettingsActivity);
-        k = (EditText) findViewById(R.id.editTextkSettingActivity);
+        koff = (EditText) findViewById(R.id.editTextkSettingActivity);
         okButton = (Button) findViewById(R.id.buttonSettingsActivity);
+        backButton = (Button) findViewById(R.id.buttonBackSetitngsActivity);
 
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Element element = findThisElement(Integer.parseInt(number.getText().toString()));
-                element.setGreen(Float.parseFloat(k.getText().toString()));
+                element.setGreen(Float.parseFloat(koff.getText().toString()));
                 if(isNew){
                     Toast.makeText(SettingsActivity.this, "Добавлена новая запись", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(SettingsActivity.this, "Запись обновлена", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

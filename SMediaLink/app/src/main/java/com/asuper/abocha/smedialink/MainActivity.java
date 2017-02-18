@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             btn = (ButtonWithProgress) itemView.findViewById(R.id.buttonListElements);
             btn.setOnClickListener(this);
             imageButton = (ImageButton) itemView.findViewById(R.id.imageViewListElements);
-            itemView.setOnClickListener(this);
+            imageButton.setOnClickListener(this);
         }
 
         public void bindELement(Element element) {
@@ -94,19 +94,25 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.buttonListElements:
-                    Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                    intent.putExtra("number", number);
-                    startActivity(intent);
+                    sendIntent(number);
                     break;
 
                 case R.id.imageViewListElements:
-                    Intent intent1 = new Intent(MainActivity.this, DetailActivity.class);
-                    intent1.putExtra("number", number);
-                    startActivity(intent1);
+                    sendIntent(number);
+                    break;
+
+                case R.id.textViewListElements:
+                    sendIntent(number);
                     break;
             }
 
         }
+    }
+
+    private void sendIntent(int number){
+        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+        intent.putExtra("number", number);
+        startActivity(intent);
     }
 
     private class ElementAdapter extends RecyclerView.Adapter<ElementHolder> {
