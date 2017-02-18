@@ -21,6 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String NUMBER = "number";
     private RecyclerView recyclerView;
     private ElementAdapter elementAdapter;
 
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendIntent(int number){
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-        intent.putExtra("number", number);
+        intent.putExtra(NUMBER, number);
         startActivity(intent);
     }
 
