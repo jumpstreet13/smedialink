@@ -18,7 +18,7 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         textView = (TextView) findViewById(R.id.textViewDetailActivity);
         button = (ButtonWithProgress) findViewById(R.id.buttonDetailActivity);
-        Element element = HomeForElements.get(getApplicationContext()).getElement(getIntent().getIntExtra(MainActivity.NUMBER,0));
+        Element element = HomeForElements.get(getApplicationContext()).getElement(getIntent().getIntExtra(MainActivity.NUMBER, 0));
         textView.setText(String.valueOf(element.getNumber()));
         button.setRatio(element.getGreen());
     }

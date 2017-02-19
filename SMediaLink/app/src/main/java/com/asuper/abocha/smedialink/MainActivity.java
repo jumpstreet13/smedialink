@@ -1,6 +1,7 @@
 package com.asuper.abocha.smedialink;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setIcon(R.drawable.logo);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         updateUI();
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void sendIntent(int number){
+    private void sendIntent(int number) {
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
         intent.putExtra(NUMBER, number);
         startActivity(intent);

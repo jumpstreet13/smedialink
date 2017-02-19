@@ -32,7 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
         okButton = (Button) findViewById(R.id.buttonSettingsActivity);
         backButton = (Button) findViewById(R.id.buttonBackSetitngsActivity);
         sharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        if(sharedPreferences.contains(NUMBER)){
+        if (sharedPreferences.contains(NUMBER)) {
             number.setText(String.valueOf(sharedPreferences.getInt(NUMBER, 0)));
             koff.setText(String.valueOf(sharedPreferences.getFloat(KOFF, 0.0f)));
         }
@@ -41,7 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(koff.getText().toString().equals("") || number.getText().toString().equals("")){
+                if (koff.getText().toString().equals("") || number.getText().toString().equals("")) {
                     Toast.makeText(SettingsActivity.this, R.string.alarm, Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -55,7 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
                 }
                 try {
                     element.setGreen(Float.parseFloat(koff.getText().toString()));
-                    if(Float.parseFloat(koff.getText().toString()) > 1 || Float.parseFloat(koff.getText().toString()) < 0){
+                    if (Float.parseFloat(koff.getText().toString()) > 1 || Float.parseFloat(koff.getText().toString()) < 0) {
                         Toast.makeText(SettingsActivity.this, R.string.wrongKoff, Toast.LENGTH_SHORT).show();
                     }
                 } catch (NumberFormatException e) {
@@ -67,9 +67,9 @@ public class SettingsActivity extends AppCompatActivity {
                 edit.putInt(NUMBER, element.getNumber());
                 edit.putFloat(KOFF, element.getGreen());
                 edit.apply();
-                if(isNew){
+                if (isNew) {
                     Toast.makeText(SettingsActivity.this, R.string.recordAdded, Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     Toast.makeText(SettingsActivity.this, R.string.recordRefreshed, Toast.LENGTH_SHORT).show();
                 }
             }

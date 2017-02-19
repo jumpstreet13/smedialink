@@ -29,16 +29,16 @@ public class ButtonWithProgress extends AppCompatButton {
         init();
     }
 
-    void init(){
+    void init() {
 
     }
 
-    public void setRatio (float ratio){
+    public void setRatio(float ratio) {
         mRatio = ratio;
         invalidate();
     }
 
-    public void setColor (int color){
+    public void setColor(int color) {
         mColor = color;
         invalidate();
     }
@@ -47,9 +47,9 @@ public class ButtonWithProgress extends AppCompatButton {
     protected void onDraw(Canvas canvas) {
 
         Drawable fill = getResources().getDrawable(R.drawable.abc_btn_default_mtrl_shape);
-        fill.setColorFilter( mColor, PorterDuff.Mode.MULTIPLY);
+        fill.setColorFilter(mColor, PorterDuff.Mode.MULTIPLY);
         fill.setAlpha(128);
-        fill.setBounds(-9, -13, (int) (getWidth()*mRatio+15),  getHeight()+15);
+        fill.setBounds(-9, -13, (int) (getWidth() * mRatio + 15), getHeight() + 15);
         fill.draw(canvas);
         super.onDraw(canvas);
     }
