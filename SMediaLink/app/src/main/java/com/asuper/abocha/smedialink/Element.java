@@ -7,10 +7,16 @@ public class Element {
 
     private int number;
     private float green;
+    private boolean ischanged;
 
     Element(int number, int green) {
         this.green = green;
         this.number = number;
+        ischanged = false;
+    }
+
+    public void setIschanged(boolean ischanged){
+        this.ischanged = ischanged;
     }
 
     public int getNumber() {

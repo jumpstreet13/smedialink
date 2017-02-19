@@ -49,7 +49,7 @@ public class ButtonWithProgress extends AppCompatButton {
         Drawable fill = getResources().getDrawable(R.drawable.abc_btn_default_mtrl_shape);
         fill.setColorFilter(mColor, PorterDuff.Mode.MULTIPLY);
         fill.setAlpha(128);
-        fill.setBounds(-9, -13, (int) (getWidth() * mRatio + 15), getHeight() + 15);
+        fill.setBounds(0, 0, (int) (getWidth() * mRatio ), getHeight());
         fill.draw(canvas);
         super.onDraw(canvas);
     }

@@ -45,7 +45,7 @@ public class SettingsActivity extends AppCompatActivity {
                     Toast.makeText(SettingsActivity.this, R.string.alarm, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Element element = null;
+                Element element;
                 try {
                     element = findThisElement(Integer.parseInt(number.getText().toString()));
                 } catch (NumberFormatException e) {
@@ -54,13 +54,16 @@ public class SettingsActivity extends AppCompatActivity {
                     return;
                 }
                 try {
-                    element.setGreen(Float.parseFloat(koff.getText().toString()));
                     if (Float.parseFloat(koff.getText().toString()) > 1 || Float.parseFloat(koff.getText().toString()) < 0) {
                         Toast.makeText(SettingsActivity.this, R.string.wrongKoff, Toast.LENGTH_SHORT).show();
+                        return;
                     }
+                    element.setGreen(Float.parseFloat(koff.getText().toString()));
+                    element.setIschanged(true);
                 } catch (NumberFormatException e) {
                     e.printStackTrace();
                     Toast.makeText(SettingsActivity.this, R.string.wrongKofftwo, Toast.LENGTH_SHORT).show();
+                    element.setIschanged(false);
                     return;
                 }
                 SharedPreferences.Editor edit = sharedPreferences.edit();

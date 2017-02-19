@@ -11,4 +11,6 @@
     <string name="wrongString">Неверный формат строки</string>
     <string name="wrongKoff">Коэффицент в пределе от 0 до 1</string>
     <string name="wrongKofftwo">Неверный формат коэффицента</string>
+    <string name="settings">settings</string>
+    <string name="history">history</string>
 </resources>
