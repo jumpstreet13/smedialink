@@ -7,4 +7,8 @@
     <string name="koff">коэффицент</string>
     <string name="ok">Ok</string>
     <string name="back">Back</string>
+    <string name="alarm">Вы не ввели номер элемента или коэффицент</string>
+    <string name="wrongString">Неверный формат строки</string>
+    <string name="wrongKoff">Коэффицент в пределе от 0 до 1</string>
+    <string name="wrongKofftwo">Неверный формат коэффицента</string>
 </resources>

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Set;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -40,8 +41,28 @@ public class SettingsActivity extends AppCompatActivity {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Element element = findThisElement(Integer.parseInt(number.getText().toString()));
-                element.setGreen(Float.parseFloat(koff.getText().toString()));
+                if(koff.getText().toString().equals("") || number.getText().toString().equals("")){
+                    Toast.makeText(SettingsActivity.this, R.string.alarm, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Element element = null;
+                try {
+                    element = findThisElement(Integer.parseInt(number.getText().toString()));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                    Toast.makeText(SettingsActivity.this, R.string.wrongString, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                try {
+                    element.setGreen(Float.parseFloat(koff.getText().toString()));
+                    if(Float.parseFloat(koff.getText().toString()) > 1 || Float.parseFloat(koff.getText().toString()) < 0){
+                        Toast.makeText(SettingsActivity.this, R.string.wrongKoff, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                    Toast.makeText(SettingsActivity.this, R.string.wrongKofftwo, Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 SharedPreferences.Editor edit = sharedPreferences.edit();
                 edit.putInt(NUMBER, element.getNumber());
                 edit.putFloat(KOFF, element.getGreen());
